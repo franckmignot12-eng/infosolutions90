@@ -1,130 +1,1363 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>INFOSOLUTION 90 - Expert Informatique</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Info-Solutions - Dépannage & Services Informatiques</title>
+  <meta name="description" content="Info-Solutions, votre spécialiste en dépannage, maintenance et optimisation informatique pour particuliers, professionnels et gamers." />
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #020617;
+      --bg-alt: #020314;
+      --bg-section: #020617;
+      --accent: #6366f1;
+      --accent-soft: rgba(99, 102, 241, 0.1);
+      --accent-strong: #4f46e5;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --danger: #ef4444;
+      --success: #22c55e;
+      --card-bg: #020617;
+      --card-elevated: radial-gradient(circle at top left, rgba(99,102,241,0.25), #020617 55%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0b1120 0, #020617 40%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* HEADER / NAVBAR */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.97), rgba(2, 6, 23, 0.85), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 1rem;
+      border: 1px solid rgba(129, 140, 248, 0.7);
+      background: radial-gradient(circle at 20% 0%, #6366f1, #020617 55%, #000 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 12px rgba(79, 70, 229, 0.4),
+        0 0 24px rgba(56, 189, 248, 0.25);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.95rem;
+    }
+
+    .logo-text span:first-child {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    .logo-text span:last-child {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--text-muted);
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, #6366f1, #22c55e);
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      border-radius: 999px;
+      padding: 0.45rem 1rem;
+      border: 1px solid rgba(99, 102, 241, 0.5);
+      background: radial-gradient(circle at top left, rgba(99, 102, 241, 0.25), rgba(15,23,42,0.96));
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.2s ease, filter 0.15s ease;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.8);
+      color: #e5e7eb;
+    }
+
+    .nav-cta span {
+      font-weight: 600;
+    }
+
+    .nav-cta small {
+      color: #bbf7d0;
+      font-size: 0.7rem;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      border-color: rgba(52, 211, 153, 0.7);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.95);
+      filter: brightness(1.03);
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 3.5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 2.7rem);
+      line-height: 1.1;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #6366f1, #22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-badge {
+      font-size: 0.78rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.75);
+      color: var(--text-muted);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      align-items: center;
+      margin-bottom: 1.6rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.65rem 1.4rem;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-weight: 600;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+      outline: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      box-shadow: 0 10px 24px rgba(79, 70, 229, 0.45);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.01);
+      box-shadow: 0 14px 30px rgba(79, 70, 229, 0.55);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: var(--text-muted);
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.6);
+    }
+
+    .btn-ghost:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.85);
+      color: #e5e7eb;
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-note strong {
+      color: #bbf7d0;
+    }
+
+    /* HERO RIGHT (PHOTO + BADGE) */
+
+    .hero-card {
+      border-radius: 1.7rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 1.1rem;
+      background: radial-gradient(circle at top left, rgba(99,102,241,0.28), rgba(15,23,42,0.98));
+      box-shadow:
+        0 22px 55px rgba(15, 23, 42, 0.9),
+        0 0 40px rgba(56, 189, 248, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-photo {
+      border-radius: 1.2rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at center, #020617 0, #000 100%);
+      overflow: hidden;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .hero-floating-badge {
+      position: absolute;
+      bottom: 1.3rem;
+      right: 1.3rem;
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 0.6rem 0.9rem;
+      font-size: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      min-width: 170px;
+    }
+
+    .hero-floating-badge strong {
+      font-size: 0.8rem;
+    }
+
+    .hero-floating-badge span {
+      color: var(--text-muted);
+    }
+
+    .hero-status {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      margin-top: 0.1rem;
+      color: #bbf7d0;
+    }
+
+    .hero-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 14px rgba(34,197,94,0.9);
+    }
+
+    /* SECTION GENERIC */
+
+    section {
+      padding: 3rem 0;
+    }
+
+    .section-headline {
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .section-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.7rem;
+      color: #a5b4fc;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 520px;
+    }
+
+    /* SERVICES */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .card {
+      border-radius: 1.2rem;
+      border: 1px solid var(--border-subtle);
+      background: #020617;
+      padding: 1.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-highlight {
+      background: var(--card-elevated);
+      box-shadow: 0 18px 44px rgba(15,23,42,0.9);
+    }
+
+    .card-badge {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+      display: inline-block;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .card-list {
+      list-style: none;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .card-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-list li::before {
+      content: "✓";
+      font-size: 0.8rem;
+      margin-top: 0.1rem;
+      color: #4ade80;
+    }
+
+    .card-footer-note {
+      font-size: 0.78rem;
+      color: #a5b4fc;
+    }
+
+    /* TARIFS */
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .pricing-card {
+      border-radius: 1.2rem;
+      border: 1px solid var(--border-subtle);
+      background: #020617;
+      padding: 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-card.popular {
+      border-color: rgba(96, 165, 250, 0.9);
+      box-shadow: 0 20px 48px rgba(15,23,42,0.95);
+      background: radial-gradient(circle at top, rgba(59,130,246,0.3), #020617 55%);
+    }
+
+    .pricing-pill {
+      font-size: 0.7rem;
+      padding: 0.22rem 0.7rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: #e5e7eb;
+      align-self: flex-start;
+    }
+
+    .pricing-name {
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+
+    .pricing-focus {
+      font-size: 0.8rem;
+      color: #a5b4fc;
+    }
+
+    .pricing-price {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .pricing-price span {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .pricing-list {
+      list-style: none;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .pricing-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .pricing-list li::before {
+      content: "•";
+      font-size: 1rem;
+      color: #a5b4fc;
+      margin-top: -0.1rem;
+    }
+
+    .pricing-bottom-note {
+      margin-top: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* POURQUOI NOUS */
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.3rem;
+    }
+
+    .why-card {
+      border-radius: 1.1rem;
+      border: 1px solid var(--border-subtle);
+      padding: 1rem;
+      background: #020617;
+    }
+
+    .why-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      background: var(--accent-soft);
+    }
+
+    .why-title {
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .why-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* A PROPOS */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 1.8rem;
+      align-items: center;
+    }
+
+    .about-card {
+      border-radius: 1.2rem;
+      border: 1px solid var(--border-subtle);
+      background: #020617;
+      padding: 1.1rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .about-card strong {
+      color: var(--text-main);
+    }
+
+    .about-tagline {
+      font-size: 0.8rem;
+      color: #a5b4fc;
+      margin-bottom: 0.6rem;
+    }
+
+    .about-list {
+      list-style: none;
+      margin-top: 0.7rem;
+      font-size: 0.82rem;
+    }
+
+    .about-list li {
+      margin-bottom: 0.3rem;
+      display: flex;
+      gap: 0.35rem;
+      align-items: flex-start;
+    }
+
+    .about-list li::before {
+      content: "→";
+      font-size: 0.8rem;
+      color: #38bdf8;
+      margin-top: 0.05rem;
+    }
+
+    .about-badge {
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 0.6rem 0.9rem;
+      background: rgba(15,23,42,0.92);
+      font-size: 0.8rem;
+    }
+
+    .about-badge strong {
+      color: #bbf7d0;
+    }
+
+    /* GALERIE */
+
+    .gallery {
+      padding-top: 1rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .gallery-item {
+      border-radius: 1.2rem;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: #020617;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-caption {
+      padding: 0.6rem 0.8rem 0.9rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .gallery-caption strong {
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    /* CONTACT */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 1.7rem;
+    }
+
+    .contact-card {
+      border-radius: 1.2rem;
+      border: 1px solid var(--border-subtle);
+      background: #020617;
+      padding: 1.2rem;
+      font-size: 0.86rem;
+    }
+
+    .contact-row {
+      margin-bottom: 0.7rem;
+    }
+
+    .contact-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .contact-value {
+      font-size: 0.94rem;
+    }
+
+    .contact-value a {
+      color: #e5e7eb;
+    }
+
+    .contact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+      font-size: 0.78rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(74, 222, 128, 0.7);
+      color: #bbf7d0;
+      background: rgba(22, 101, 52, 0.25);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+    }
+
+    .form-field label {
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      border-radius: 0.8rem;
+      border: 1px solid var(--border-subtle);
+      background: #020617;
+      padding: 0.55rem 0.75rem;
+      font-family: inherit;
+      font-size: 0.82rem;
+      color: var(--text-main);
+      outline: none;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: rgba(96, 165, 250, 0.9);
+      box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.7);
+    }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.15);
+      padding: 1.4rem 0 2rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 2.2rem;
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .services-grid,
+      .pricing-grid,
+      .why-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+  </style>
 
 <style>
-body{
-font-family:Poppins,sans-serif;
-background:#020617;
-color:white;
-margin:0;
+.logo img{
+  transition:transform 0.3s ease, filter 0.3s ease;
 }
-
-.container{max-width:1100px;margin:auto;padding:20px;}
-
-header{background:#01040c;border-bottom:1px solid #1f2937;}
-.nav{display:flex;justify-content:space-between;align-items:center;}
-.logo{display:flex;align-items:center;gap:10px;}
-.logo img{height:40px;border-radius:6px;}
-
-.hero{display:flex;gap:40px;align-items:center;padding:40px 0;}
-.hero-photo img{width:100%;border-radius:14px;}
-
-.gallery-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-margin-top:30px;
+.logo img:hover{
+  transform:scale(1.05);
+  filter:drop-shadow(0 0 8px rgba(99,102,241,0.6));
 }
-
-.gallery-item{
-background:#020617;
-border:1px solid #1f2937;
-border-radius:14px;
-overflow:hidden;
-transition:0.3s;
+.hero-photo img{
+  animation:fadeIn 1.2s ease forwards;
 }
-
-.gallery-item:hover{
-transform:translateY(-5px);
-box-shadow:0 0 25px rgba(99,102,241,0.3);
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
 }
-
-.gallery-item img{
-width:100%;
-height:200px;
-object-fit:cover;
-}
-
-.gallery-caption{
-padding:10px;
-font-size:14px;
-color:#9ca3af;
-}
-
-.gallery-caption strong{color:white;}
 </style>
-</head>
 
+
+<style>
+.btn-primary{
+  background:linear-gradient(135deg,#4f46e5,#22c55e);
+  box-shadow:0 0 20px rgba(79,70,229,0.5);
+}
+.btn-primary:hover{
+  box-shadow:0 0 30px rgba(34,197,94,0.7);
+}
+.hero-title{
+  text-shadow:0 0 18px rgba(99,102,241,0.25);
+}
+.pricing-card.popular{
+  transform:scale(1.03);
+}
+</style>
+
+
+<style>
+/* ===== GALERIE VERSION EXPERT ===== */
+.gallery-item{
+  position:relative;
+  overflow:hidden;
+  transition:transform 0.35s ease, box-shadow 0.35s ease;
+}
+.gallery-item img{
+  transition:transform 0.45s ease, filter 0.45s ease;
+}
+.gallery-item:hover{
+  transform:translateY(-6px) scale(1.01);
+  box-shadow:0 20px 40px rgba(0,0,0,0.6);
+}
+.gallery-item:hover img{
+  transform:scale(1.08);
+  filter:brightness(1.05) saturate(1.1);
+}
+.gallery-item::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:1.2rem;
+  box-shadow:0 0 0px rgba(99,102,241,0);
+  transition:box-shadow 0.4s ease;
+}
+.gallery-item:hover::after{
+  box-shadow:0 0 30px rgba(99,102,241,0.35),
+             0 0 60px rgba(34,197,94,0.25);
+}
+</style>
+
+</head>
 <body>
 
-<header>
-<div class="container nav">
-<div class="logo">
-<img src="logo.png">
-<div>
-<strong>INFOSOLUTION 90</strong><br>
-<span style="font-size:12px;color:#9ca3af;">Dépannage informatique</span>
-</div>
-</div>
-</div>
-</header>
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="logo">
+          <img src="logo.png" alt="INFOSOLUTION 90" style="height:42px;border-radius:8px;">
+          <div class="logo-text">
+            <span>INFO-SOLUTIONS</span>
+            <span>Dépannage & services informatiques</span>
+          </div>
+        </div>
 
-<div class="container">
+        <div class="nav-links">
+          <a href="#accueil">Accueil</a>
+          <a href="#services">Services</a>
+          <a href="#tarifs">Tarifs</a>
+          <a href="#apropos">À propos</a>
+          <a href="#contact">Contact</a>
+          <a href="tel:+33695162036" class="nav-cta call-glow">
+  <span>06&nbsp;95&nbsp;16&nbsp;20&nbsp;36</span>
+  <small>Appel direct</small>
+</a>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-<section class="hero">
-<div>
-<h1>⭐ Expert IT • INFOSOLUTION 90</h1>
-<p>Dépannage, maintenance et optimisation PC pour particuliers, pros et gamers.</p>
-</div>
+  <main>
 
-<div class="hero-photo">
-<img src="setup.jpg">
-</div>
-</section>
+    <!-- HERO -->
+    <section id="accueil" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-tag">
+            <div class="hero-tag-dot"></div>
+            Info-Solutions • Territoire de Belfort & alentours
+          </div>
+          <h1 class="hero-title">
+            ⭐ Expert IT • INFOSOLUTION 90<br>Dépannage, maintenance & optimisation PC pour
+            <span>particuliers, pros & gamers</span>.
+          </h1>
+          <p class="hero-subtitle">
+            Votre ordinateur rame, plante ou n’est plus au niveau pour le jeu ? Info-Solutions prend en charge
+            votre machine, de l’entretien complet à l’optimisation gaming, avec un langage clair et des explications simples.
+          </p>
 
-<!-- GALERIE -->
-<section class="gallery">
+          <div class="hero-badges">
+            <div class="hero-badge">🔐 Expertise Réseau & Cybersécurité</div>
+            <div class="hero-badge">✔ Dépannage à distance & à domicile</div>
+            <div class="hero-badge">✔ Conseils personnalisés avant achat</div>
+            <div class="hero-badge">✔ Optimisation spéciale jeux vidéo</div>
+          </div>
 
-<h2>Info-Solutions, c’est pour qui ?</h2>
+          <div class="hero-cta-row">
+            <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+              Prendre contact maintenant
+            </button>
+            <button class="btn btn-ghost" onclick="document.getElementById('tarifs').scrollIntoView({behavior:'smooth'})">
+              Voir les tarifs
+            </button>
+          </div>
 
-<div class="gallery-grid">
+          <p class="hero-note">
+            <strong>Simple pour vous :</strong> vous m’appelez, on fait le point ensemble, et je m’occupe du reste.
+          </p>
+        </div>
 
-<article class="gallery-item">
-<img src="images/depannage.jpg">
-<div class="gallery-caption">
-<strong>Particuliers</strong><br>
-Remise en état d’ordinateurs trop lents et suppression de virus.
-</div>
-</article>
+        <div>
+          <div class="hero-card">
+            <div class="hero-photo">
+              <!-- 🖼️ Mets ici ta propre photo : remplace hero.jpg par ton fichier -->
+              <img src="setup.jpg" alt="Technicien informatique au travail">
+            </div>
 
-<article class="gallery-item">
-<img src="images/gaming.jpg">
-<div class="gallery-caption">
-<strong>Gamers</strong><br>
-Optimisation FPS et réglages performance.
-</div>
-</article>
+            <div class="hero-floating-badge">
+              <strong>Intervention personnalisée</strong>
+              <span>On prend le temps d’expliquer chaque étape et ce qui a été fait sur votre PC.</span>
+              <div class="hero-status">
+                <div class="hero-status-dot"></div>
+                <span>Disponibilité rapide selon vos besoins</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<article class="gallery-item">
-<img src="images/entreprise.jpg">
-<div class="gallery-caption">
-<strong>Professionnels</strong><br>
-Installation et maintenance de postes de travail.
-</div>
-</article>
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <div class="section-headline">
+          <span class="section-kicker">Services</span>
+          <h2 class="section-title">Des offres adaptées à chaque profil</h2>
+          <p class="section-subtitle">
+            Info-Solutions accompagne aussi bien les particuliers que les professionnels et les gamers
+            avec des prestations claires et transparentes.
+          </p>
+        </div>
 
-</div>
+        <div class="services-grid">
+          <article class="card">
+            <div class="card-badge">Particuliers</div>
+            <h3 class="card-title">Dépannage & confort d’utilisation</h3>
+            <p class="card-text">
+              Retrouver un PC fluide, sécurisé et agréable à utiliser au quotidien.
+            </p>
+            <ul class="card-list">
+              <li>Nettoyage complet (logiciel et poussière sur devis)</li>
+              <li>Suppression de virus et publicités envahissantes</li>
+              <li>Réinstallation de Windows et sauvegarde de données</li>
+              <li>Configuration mail, imprimante, box Internet…</li>
+            </ul>
+            <p class="card-footer-note">Objectif : que votre ordinateur "juste fonctionne".</p>
+          </article>
 
-</section>
+          <article class="card card-highlight">
+            <div class="card-badge">Gamers</div>
+            <h3 class="card-title">Optimisation gaming & performance</h3>
+            <p class="card-text">
+              Pour ceux qui veulent des FPS stables, moins de lag et un PC qui répond.
+            </p>
+            <ul class="card-list">
+              <li>Optimisation Windows pour le jeu (services, démarrage…)</li>
+              <li>Réglages graphiques adaptés à vos jeux & écran</li>
+              <li>Conseils upgrade (RAM, carte graphique, SSD…)</li>
+              <li>Analyse réseau pour réduire la latence (ping)</li>
+            </ul>
+            <p class="card-footer-note">Pensé spécialement pour les joueurs exigeants.</p>
+          </article>
 
-</div>
+          <article class="card">
+            <div class="card-badge">Professionnels</div>
+            <h3 class="card-title">Fiabilité & continuité d’activité</h3>
+            <p class="card-text">
+              Votre informatique doit suivre votre activité, pas l’inverse.
+            </p>
+            <ul class="card-list">
+              <li>Diagnostic et remise à niveau du parc existant</li>
+              <li>Conseils pour sécuriser données & accès</li>
+              <li>Contrats de suivi sur mesure (sur devis)</li>
+              <li>Installation et configuration de postes</li>
+            </ul>
+            <p class="card-footer-note">Un interlocuteur unique, des explications claires.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    
+    <!-- TARIFS -->
+    <section id="tarifs">
+      <div class="container">
+        <div class="section-headline">
+          <span class="section-kicker">Tarifs</span>
+          <h2 class="section-title">Grille tarifaire 2026</h2>
+          <p class="section-subtitle">
+            Des tarifs clairs, transparents et sans surprise. Chaque intervention est expliquée et validée avant réalisation.
+          </p>
+        </div>
+
+        <div class="pricing-grid" style="margin-bottom:2.5rem;">
+
+          <article class="pricing-card">
+            <div class="pricing-pill">Particuliers</div>
+            <div class="pricing-name">Assistance informatique</div>
+            <div class="pricing-price">65 € <span>/ heure</span></div>
+            <ul class="pricing-list">
+              <li>Dépannage logiciel</li>
+              <li>Suppression virus</li>
+              <li>Optimisation Windows</li>
+              <li>Installation imprimante / box / mail</li>
+            </ul>
+          </article>
+
+          <article class="pricing-card popular">
+            <div class="pricing-pill">Gamers</div>
+            <div class="pricing-name">Optimisation & performance</div>
+            <div class="pricing-price">75 € <span>/ heure</span></div>
+            <ul class="pricing-list">
+              <li>Optimisation FPS & stabilité</li>
+              <li>Réglages pilotes & système</li>
+              <li>Analyse latence réseau</li>
+              <li>Conseils upgrade matériel</li>
+            </ul>
+          </article>
+
+          <article class="pricing-card">
+            <div class="pricing-pill">Professionnels</div>
+            <div class="pricing-name">Maintenance & support IT</div>
+            <div class="pricing-price">95 € <span>/ heure</span></div>
+            <ul class="pricing-list">
+              <li>Installation & configuration postes</li>
+              <li>Réseau & sécurisation</li>
+              <li>Support prioritaire</li>
+              <li>Conseils évolution infrastructure</li>
+            </ul>
+          </article>
+
+        </div>
+
+        <div class="pricing-grid">
+
+          <article class="pricing-card">
+            <div class="pricing-pill">Prestations spécifiques</div>
+            <div class="pricing-name">Récupération de données</div>
+            <div class="pricing-price">80 € <span>/ heure</span></div>
+          </article>
+
+          <article class="pricing-card">
+            <div class="pricing-pill">Déplacement</div>
+            <div class="pricing-name">À domicile (15 km)</div>
+            <div class="pricing-price">25 € <span>/ intervention</span></div>
+          </article>
+
+          <article class="pricing-card">
+            <div class="pricing-pill">Diagnostic atelier</div>
+            <div class="pricing-name">Analyse complète</div>
+            <div class="pricing-price">49 € <span>/ forfait</span></div>
+          </article>
+
+        </div>
+
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:1.5rem;">
+          TVA non applicable, article 293 B du CGI. Prix exprimés en euros TTC.
+        </p>
+
+      </div>
+    </section>
+<!-- POURQUOI NOUS -->
+    <section>
+      <div class="container">
+        <div class="section-headline">
+          <span class="section-kicker">Pourquoi choisir info-solutions</span>
+          <h2 class="section-title">Un technicien, un langage simple, un résultat concret</h2>
+        </div>
+
+        <div class="why-grid">
+          <article class="why-card">
+            <div class="why-icon">💬</div>
+            <h3 class="why-title">Explications claires</h3>
+            <p class="why-text">
+              Pas de jargon incompréhensible : chaque intervention est expliquée simplement,
+              pour que vous sachiez exactement ce qui a été fait.
+            </p>
+          </article>
+
+          <article class="why-card">
+            <div class="why-icon">⚡</div>
+            <h3 class="why-title">Réactivité</h3>
+            <p class="why-text">
+              Prise de contact rapide et proposition de solution adaptée à votre urgence
+              (à distance ou sur place selon les cas).
+            </p>
+          </article>
+
+          <article class="why-card">
+            <div class="why-icon">🎯</div>
+            <h3 class="why-title">Sur-mesure</h3>
+            <p class="why-text">
+              Particulier, pro ou gamer : les conseils sont adaptés à votre usage réel,
+              à votre budget et à votre matériel.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- A PROPOS -->
+    <section id="apropos">
+      <div class="container">
+        <div class="section-headline">
+          <span class="section-kicker">À propos</span>
+          <h2 class="section-title">Info-Solutions, votre partenaire informatique de confiance</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card">
+            <p class="about-tagline">Une approche humaine de l’informatique</p>
+            <p>
+              <strong>Info-Solutions</strong> est née d’une idée simple : rendre l’informatique plus
+              accessible, sans stress et sans vocabulaire compliqué.
+            </p>
+            <p style="margin-top:0.6rem;">
+              L’objectif : vous accompagner dans la durée, que ce soit pour :
+            </p>
+            <ul class="about-list">
+              <li>Remettre en forme un PC trop lent ou instable</li>
+              <li>Préparer une machine de jeu vraiment optimisée</li>
+              <li>Sécuriser un environnement de travail professionnel</li>
+              <li>Vous conseiller avant un achat ou un upgrade</li>
+            </ul>
+          </div>
+
+          <div class="about-badge">
+            <strong>Comment ça se passe concrètement ?</strong><br>
+            1. Vous prenez contact (téléphone ou formulaire).<br>
+            2. On fait le point sur votre situation, simplement.<br>
+            3. Vous validez le tarif annoncé.<br>
+            4. L’intervention est réalisée et expliquée étape par étape.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIE -->
+    <section class="gallery">
+      <div class="container">
+        <div class="section-headline">
+          <span class="section-kicker">En images</span>
+          <h2 class="section-title">Info-Solutions, c’est pour qui ?</h2>
+          <p class="section-subtitle">
+            Particuliers, gamers, professionnels : quelques exemples de situations où Info-Solutions intervient
+            pour simplifier votre quotidien informatique.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="gallery-item">
+            <!-- 🖼️ Mets ta propre photo pour particuliers -->
+            <img src="images/depannage.jpg" alt="Dépannage informatique pour particuliers">
+            <div class="gallery-caption">
+              <strong>Particuliers</strong>
+              Remise en état d’ordinateurs trop lents, suppression de virus,
+              aide pour mieux utiliser Internet au quotidien.
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <!-- 🖼️ Mets ta propre photo pour gamers -->
+            <img src="images/gaming.jpg" alt="Setup gaming avec écran et PC">
+            <div class="gallery-caption">
+              <strong>Gamers</strong>
+              Optimisation des FPS, réglages graphiques adaptés, conseils pour
+              tirer le maximum de votre configuration actuelle.
+            </div>
+          </article>
+
+          <article class="gallery-item">
+            <!-- 🖼️ Mets ta propre photo pro -->
+            <img src="images/entreprise.jpg" alt="Postes de travail en entreprise">
+            <div class="gallery-caption">
+              <strong>Professionnels</strong>
+              Postes de travail fiables, conseils de sécurité, accompagnement
+              pour garder votre activité fluide.
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-headline">
+          <span class="section-kicker">Contact</span>
+          <h2 class="section-title">Parlons de votre besoin</h2>
+          <p class="section-subtitle">
+            Un simple appel ou message suffit pour démarrer : expliquez votre problème ou votre projet,
+            et nous voyons ensemble la meilleure solution.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-row">
+              <div class="contact-label">Téléphone</div>
+              <div class="contact-value">
+                <a href="tel:+33695162036">06&nbsp;95&nbsp;16&nbsp;20&nbsp;36</a>
+              </div>
+              <div class="contact-badge">
+                📞 Réponse rapide dans la mesure du possible
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-label">E-mail</div>
+              <div class="contact-value">
+                <!-- 🔧 Quand tu auras un vrai mail pro, remplace ici -->
+                <a href="mailto:infosolution.services90@gmail.com">infosolution.services90@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-label">Zone d’intervention</div>
+              <div class="contact-value">
+                Territoire de Belfort et environs (et dépannage à distance selon les cas).
+              </div>
+            </div>
+
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.8rem;">
+              Lors de votre appel ou message, pensez à préciser : le type de machine (PC fixe, portable),
+              le problème constaté, et si vous jouez à des jeux en particulier (pour les optimisations gaming).
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Ce formulaire est un exemple visuel. Pour le rendre fonctionnel, il faudra le relier à une boîte mail ou un service de formulaire.');">
+              <div class="form-field">
+                <label for="nom">Nom / Prénom</label>
+                <input id="nom" type="text" placeholder="Votre nom">
+              </div>
+              <div class="form-field">
+                <label for="email">E-mail</label>
+                <input id="email" type="email" placeholder="votre.email@example.com">
+              </div>
+              <div class="form-field">
+                <label for="type">Vous êtes</label>
+                <input id="type" type="text" placeholder="Particulier, professionnel, gamer...">
+              </div>
+              <div class="form-field">
+                <label for="message">Votre demande</label>
+                <textarea id="message" rows="4" placeholder="Expliquez votre problème ou votre besoin..."></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit">
+                Envoyer la demande (exemple)
+              </button>
+              <p class="form-note">
+                🔧 Ce formulaire est là pour le design. On pourra ensuite le relier à votre e-mail via un service simple (sans programmation).
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© <span id="year"></span> INFOSOLUTION 90 — Expert Informatique & Performance Gaming.</div>
+      <div class="footer-links">
+        <a href="#accueil">Haut de page</a>
+        <a href="#services">Services</a>
+        <a href="#tarifs">Tarifs</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Affichage automatique de l'année en bas de page
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
